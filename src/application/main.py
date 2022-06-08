@@ -24,25 +24,58 @@ import gi
 gi.require_version("Gtk", "3.0")
 
 from gi.repository import Gtk
+from gi.repository import Gdk
 
 import libspdtmr as spdtmr
 
-class Window(Gtk.Window):
+class Timer(Gtk.Window):
     def __init__(self):
+        # set basic attributes of the timer widget
         Gtk.Window.__init__(self, title="spdtmr")
         Gtk.Window.set_default_size(self, 400, 325)
         Gtk.Window.set_position(self, Gtk.WindowPosition.CENTER)
 
-        button = Gtk.Button(label="Test")
-        button.connect("clicked", self.ButtonActive)
+        # timer widget does not have decorations
+        Gtk.Window.set_decorated(self, False)
+        Gtk.Window.set_resizable(self, True)
 
-        self.add(button)
+        # GTK deletion event
+        self.connect("delete-event", self._delete)
 
-    def ButtonActive(self, btn):
-        print(f"current version of spdtmr: {spdtmr.Version()}")
+        # create right-click context menu
+        self._build_context_menu()
+        self._assign_context_menu_actions()
+        # entire window has a button press event (for the right-click context menu)
+        self.connect("button-press-event", self._button_press)
 
-window = Window()
-window.connect("delete-event", Gtk.main_quit)
-window.show_all()
+    def _build_context_menu(self):
+        # right click context menu
+        self.cmenu = Gtk.Menu.new()
+
+        # exit the application
+        self.cm_item = Gtk.MenuItem.new_with_label("Quit")
+        self.cmenu.append(self.cm_item)
+
+        # show context menu items
+        self.cmenu.show_all()
+
+    def _assign_context_menu_actions(self):
+        # assign quit action
+        self.cm_item.connect("button-press-event", self._delete)
+
+    def _button_press(self, widget, event):
+        if event.type == Gdk.EventType.BUTTON_PRESS and event.button == 3:
+            self.cmenu.popup_at_pointer()
+
+        return True
+
+    def _delete(self, a, b):
+        print("quitting...")
+        Gtk.main_quit()
+
+
+timer = Timer()
+timer.connect("delete-event", Gtk.main_quit)
+timer.show_all()
 
 Gtk.main()
