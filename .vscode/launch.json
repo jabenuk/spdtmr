@@ -1,0 +1,12 @@
+{
+    "configurations": [
+        {
+            "name": "Python: Debug",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/src/application/main.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}
