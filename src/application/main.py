@@ -25,8 +25,6 @@ gi.require_version("Gtk", "3.0")
 
 from gi.repository import Gtk
 
-from sys import path
-path.append("@CMAKE_CURRENT_BINARY_DIR@")
 import libspdtmr as spdtmr
 
 class Window(Gtk.Window):

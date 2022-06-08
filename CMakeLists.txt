@@ -37,23 +37,6 @@ set_target_properties(${SPDTMR_API_NAME}
 )
 
 #
-# generate all Python application files so the build directory can be accessed from within them
-
-# I have about 1000 problems with doing this (jesus, copying source files to the build directory is just on so many levels of dumbassery)
-# but until the people who make Python start thinking properly, we have to make do with the astoundingly appalling module/package/whatever-the-fuck-theyre-called
-# system. The only reason - the ONE reason - I am even doing this godawful step is because we need to access the location of the libspdtmr library
-# output, which is CMAKE_CURRENT_BINARY_DIR, from within the shitty Python source files. i'm guessing there is a better way of doing this that is less idiotic
-# but this... works... for now ¯\_(ツ)_/¯
-
-file(GLOB PYTHON_FILES "${CMAKE_CURRENT_LIST_DIR}/src/application/*")
-foreach(file ${PYTHON_FILES})
-    # get filename from path (/absolute/path/to/main.py -> main.py)
-    get_filename_component(filename "${file}" NAME)
-
-    configure_file("${CMAKE_CURRENT_LIST_DIR}/src/application/${filename}" "${CMAKE_CURRENT_BINARY_DIR}/src/application/${filename}" @ONLY)
-endforeach()
-
-#
 # if the Python application is not being compiled then we are done
 
 if (NOT SPDTMR_PYTHON_AOT)

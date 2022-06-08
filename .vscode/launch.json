@@ -4,9 +4,12 @@
             "name": "Python: Debug",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}/build/src/application/main.py",
+            "program": "${workspaceFolder}/src/application/main.py",
             "console": "integratedTerminal",
-            "justMyCode": true
+            "justMyCode": true,
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/build"
+            }
         }
     ]
 }
