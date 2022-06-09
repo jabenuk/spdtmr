@@ -18,12 +18,18 @@
 /*                                                                       */
 /*************************************************************************/
 
-#include "module/libspdtmr.h"
+#pragma once
+#ifndef __LIBSPDTMR_H
+#define __LIBSPDTMR_H
 
-/**
- * @brief Get the current version of spdtmr.
- *
- */
-PYAPI Version(PYNOARGS) {
-    return Py_BuildValue("s", SPDTMR_VERSION);
-}
+#ifdef __cplusplus
+    extern "C" {
+#endif
+
+#define SPDTMR_VERSION "dev_v0.1"
+
+#ifdef __cplusplus
+    }
+#endif
+
+#endif // __SPDTMR_H

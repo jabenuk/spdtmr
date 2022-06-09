@@ -18,21 +18,16 @@
 /*                                                                       */
 /*************************************************************************/
 
+#include <QApplication>
+#include <QPushButton>
+
 #include "libspdtmr.h"
 
-static PyMethodDef MODULE_FUNCTIONS[] = {
-    { "Version", (PyCFunction) Version, METH_NOARGS, "Get the current version of spdtmr." },
-    { NULL, NULL, 0, NULL }
-};
+int main(int argc, char *argv[]) {
+    QApplication app(argc, argv);
 
-static struct PyModuleDef MODULE_DEFINITION = {
-    PyModuleDef_HEAD_INIT,
-    "spdtmrapi",
-    "A lightweight, cross-platform speedrun timer",
-    -1,
-    MODULE_FUNCTIONS
-};
+    QPushButton button("Hello World!\n");
+    button.show();
 
-PyMODINIT_FUNC PyInit_libspdtmr() {
-    return PyModule_Create(&MODULE_DEFINITION);
+    return app.exec();
 }
