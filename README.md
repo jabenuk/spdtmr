@@ -3,4 +3,4 @@
 
 # spdtmr: a lightweight, cross-platform speedrun timer.
 
-[![license: GPL-3.0](https://img.shields.io/github/license/jabenuk/spdtmr?label=Licence)](/LICENSE)
+[![license: GPL-3.0](https://img.shields.io/github/license/jabenuk/spdtmr?label=Licence)](/LICENCE)
