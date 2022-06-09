@@ -28,8 +28,7 @@
 			"args": [
 				".",
 				"-B",
-				"${buildFolder}",
-				"-DSPDTMR_PYTHON_AOT=OFF",
+				"${buildFolder}"
 			]
 		/* __clean */  }, {
 			"label": "__clean",
