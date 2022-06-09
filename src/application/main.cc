@@ -18,14 +18,16 @@
 /*                                                                       */
 /*************************************************************************/
 
-#include <QCoreApplication>
+#include <QApplication>
+#include <QPushButton>
 
 #include "libspdtmr.h"
 
 int main(int argc, char *argv[]) {
-    QCoreApplication app(argc, argv);
+    QApplication app(argc, argv);
 
-    // the application will currently just hang on execution, no window is created
+    QPushButton button("Hello World!\n");
+    button.show();
 
     return app.exec();
 }
