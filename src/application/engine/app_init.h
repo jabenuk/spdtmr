@@ -19,17 +19,15 @@
 /*************************************************************************/
 
 #pragma once
-#ifndef __LIBSPDTMR_H
-#define __LIBSPDTMR_H
+#ifndef __APP_INIT_H
+#define __APP_INIT_H
 
-#ifdef __cplusplus
-    extern "C" {
-#endif
+namespace spdtmrapp {
+    // forward declaration(s)
+    class TimerWindow;
 
-#define SPDTMR_VERSION "dev_v0.1"
+    // exit function to properly handle termination of the application
+    void Exit();
+}
 
-#ifdef __cplusplus
-    }
-#endif
-
-#endif // __LIBSPDTMR_H
+#endif // __APP_INIT_H

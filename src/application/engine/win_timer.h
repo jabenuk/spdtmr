@@ -19,17 +19,26 @@
 /*************************************************************************/
 
 #pragma once
-#ifndef __LIBSPDTMR_H
-#define __LIBSPDTMR_H
+#ifndef __WIN_TIMER_H
+#define __WIN_TIMER_H
 
-#ifdef __cplusplus
-    extern "C" {
-#endif
+#include <QWidget>
 
-#define SPDTMR_VERSION "dev_v0.1"
+namespace spdtmrapp {
+    // The main Timer window widget
+    class TimerWindow : public QWidget {
+        // this class is a custom Qt object, inheriting from the QWidget class.
+        Q_OBJECT
 
-#ifdef __cplusplus
-    }
-#endif
+    private slots:
+        // a window context menu slot function:
+        // this slot will be called by Qt when the 'customContextmenuRequested' signal is sent, i.e. the user
+        // clicks the right mouse button on the window
+        void m_slot_WindowContextMenu(const QPoint &pos);
 
-#endif // __LIBSPDTMR_H
+    public:
+        TimerWindow(unsigned int sizeX, unsigned int sizeY);
+    };
+}
+
+#endif // __WIN_TIMER_H

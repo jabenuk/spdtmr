@@ -22,7 +22,9 @@ set(SRC_DIR "${CMAKE_CURRENT_LIST_DIR}/src")
 # set list of source files
 set(SRCS
     # application: the frontend GUI application
-    "${SRC_DIR}/application/main.cc"
+    "${SRC_DIR}/application/program.cc"
+    "${SRC_DIR}/application/engine/win_timer.cc"       "${SRC_DIR}/application/engine/win_timer.h"
+    "${SRC_DIR}/application/engine/app_init.cc"        "${SRC_DIR}/application/engine/app_init.h"
 
     # lib: the backend (in C) which is called by the application
     "${SRC_DIR}/lib/libspdtmr.h"

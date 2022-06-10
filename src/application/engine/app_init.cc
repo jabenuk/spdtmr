@@ -18,16 +18,16 @@
 /*                                                                       */
 /*************************************************************************/
 
-#include <QApplication>
-#include <QPushButton>
-
+#include "app_init.h"
 #include "libspdtmr.h"
 
-int main(int argc, char *argv[]) {
-    QApplication app(argc, argv);
+#include <QApplication>
+#include <QDebug>
 
-    QPushButton button("Hello World!\n");
-    button.show();
-
-    return app.exec();
+namespace spdtmrapp {
+    // exit function to properly handle termination of the application
+    void Exit() {
+        qDebug() << "Exit function reached";
+        QApplication::quit();
+    }
 }

@@ -18,18 +18,41 @@
 /*                                                                       */
 /*************************************************************************/
 
-#pragma once
-#ifndef __LIBSPDTMR_H
-#define __LIBSPDTMR_H
+#include "win_timer.h"
+#include "app_init.h"
+#include "libspdtmr.h"
 
-#ifdef __cplusplus
-    extern "C" {
-#endif
+#include <QApplication>
+#include <QMenu>
 
-#define SPDTMR_VERSION "dev_v0.1"
+namespace spdtmrapp {
+    void TimerWindow::m_slot_WindowContextMenu(const QPoint &pos) {
+        // the pos parameter is normally in 'widget coordinates' so it must be mapped to global coordinates*
+        // *global coordinates mean that 0, 0 is the top-left of the SCREEN (left-most screen if multi-monitor), not necessarily the WIDGET
+        QPoint gpos = mapToGlobal(pos);
 
-#ifdef __cplusplus
+        QMenu contextMenu;
+
+        // add actions to the context menu:
+
+        // 'Exit' action
+        contextMenu.addAction("Exit", Exit);
+
+        // 'execute' the context menu (show it) at the gpos position
+        contextMenu.exec(gpos);
     }
-#endif
 
-#endif // __LIBSPDTMR_H
+    TimerWindow::TimerWindow(unsigned int sizeX, unsigned int sizeY) {
+        setWindowTitle(QApplication::translate("toplevel", "spdtmr"));
+        resize(sizeX, sizeY);
+
+        // set window flags:
+        //      custom window hints - defaults are not used (so no title bar, decorations, etc)
+        setWindowFlags(Qt::CustomizeWindowHint);
+
+        // set context menu policy: a custom context menu allows us to implement our own
+        // we must then connect our context menu slot to the appropriate signal with connect()
+        setContextMenuPolicy(Qt::CustomContextMenu);
+        connect(this, SIGNAL(customContextMenuRequested(const QPoint &)), this, SLOT(m_slot_WindowContextMenu(const QPoint &)));
+    }
+}

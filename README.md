@@ -1,6 +1,10 @@
 
-<img src="/.github/3dicon.png" width=130px align=left>
+<img src="/.github/3dicon.png" width=100px align=left>
 
 # spdtmr: a lightweight, cross-platform speedrun timer.
 
-[![license: GPL-3.0](https://img.shields.io/github/license/jabenuk/spdtmr?label=Licence)](/LICENCE)
+**_This project began out of frustration that [LiveSplit](http://livesplit.org/) is not natively supported on Linux._**
+
+## To-do
+
+For an official to-do list, please see the [TODO.md](/.github/docs/TODO.md) file.

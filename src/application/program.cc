@@ -18,18 +18,17 @@
 /*                                                                       */
 /*************************************************************************/
 
-#pragma once
-#ifndef __LIBSPDTMR_H
-#define __LIBSPDTMR_H
+#include "libspdtmr.h"
 
-#ifdef __cplusplus
-    extern "C" {
-#endif
+#include "engine/win_timer.h"
 
-#define SPDTMR_VERSION "dev_v0.1"
+#include <QApplication>
 
-#ifdef __cplusplus
-    }
-#endif
+int main(int argc, char *argv[]) {
+    QApplication app(argc, argv);
 
-#endif // __LIBSPDTMR_H
+    spdtmrapp::TimerWindow window(320, 240);
+    window.show();
+
+    return app.exec();
+}
