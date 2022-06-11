@@ -1,5 +1,7 @@
+# ignoring files in Git commits based on glob selectors
+
+# build output files
 build/
 
-*.json
-!tasks.*
-!launch.*
+# editor-specific files
+.vscode/
