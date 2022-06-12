@@ -24,6 +24,7 @@
 
 #include <QApplication>
 #include <QMenu>
+#include <QMouseEvent>
 
 namespace spdtmrapp {
     void TimerWindow::m_slot_WindowContextMenu(const QPoint &pos) {
@@ -40,6 +41,25 @@ namespace spdtmrapp {
 
         // 'execute' the context menu (show it) at the gpos position
         contextMenu.exec(gpos);
+    }
+
+    void TimerWindow::mouseMoveEvent(QMouseEvent *event) {
+        // if the event.buttons() bit mask includes the left mouse button (LMB is being held down whilst moving) then move the window
+        if (event->buttons() & Qt::LeftButton) {
+            move(event->globalPosition().toPoint() - m_mouseDragInitial);
+
+            event->accept();
+        }
+    }
+
+    void TimerWindow::mousePressEvent(QMouseEvent *event) {
+        // if the user clicks the left mouse button...
+        if (event->button() == Qt::LeftButton) {
+            // get difference between top-left position of the window and the mouse position
+            m_mouseDragInitial = event->globalPosition().toPoint() - frameGeometry().topLeft();
+
+            event->accept();
+        }
     }
 
     TimerWindow::TimerWindow(unsigned int sizeX, unsigned int sizeY) {

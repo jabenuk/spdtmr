@@ -36,6 +36,15 @@ namespace spdtmrapp {
         // clicks the right mouse button on the window
         void m_slot_WindowContextMenu(const QPoint &pos);
 
+    private:
+        // the position where mouse dragging begins
+        QPoint m_mouseDragInitial;
+
+    protected:
+        // since the window does not have a title bar, we must provide implementations for mouse events (so the window can be resized and moved)
+        void mouseMoveEvent(QMouseEvent *event);
+        void mousePressEvent(QMouseEvent *event);
+
     public:
         TimerWindow(unsigned int sizeX, unsigned int sizeY);
     };
