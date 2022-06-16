@@ -13,3 +13,6 @@ Most features described in this file can be found with [LiveSplit](http://livesp
    - run complete - personal best/world record
    - run complete - indicate if ahead or behind of PB/WR
    - timer is paused, not running, etc
+ - [ ] Integration with Speedrun.com:
+   - this can be done with the [speedrun.com API](https://github.com/speedruncomorg/api)...
+   - ...which has multiple unofficial implementations, [including one for Python](https://github.com/blha303/srcomapi)
