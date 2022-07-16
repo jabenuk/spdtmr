@@ -1,6 +1,3 @@
-
-<img src="/.github/3dicon.png" width=100px align=left>
-
 # spdtmr: a lightweight, cross-platform speedrun timer.
 
 **_This project began out of frustration that [LiveSplit](http://livesplit.org/) is not natively supported on Linux._**
