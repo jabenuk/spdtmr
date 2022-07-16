@@ -21,13 +21,10 @@ set(SRC_DIR "${CMAKE_CURRENT_LIST_DIR}/src")
 
 # set list of source files
 set(SRCS
-    # application: the frontend GUI application
-    "${SRC_DIR}/application/program.cc"
-    "${SRC_DIR}/application/engine/win_timer.cc"       "${SRC_DIR}/application/engine/win_timer.h"
-    "${SRC_DIR}/application/engine/app_init.cc"        "${SRC_DIR}/application/engine/app_init.h"
+    "src/application/main.cc"
 
-    # lib: the backend (in C) which is called by the application
-    "${SRC_DIR}/lib/libspdtmr.h"
+    "src/application/windows/win_timer.cc"
+    "src/application/windows/win_timer.h"
 )
 
 # declare executable with the project name and the list of source files
@@ -40,5 +37,4 @@ target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Widgets)
 target_include_directories(${PROJECT_NAME}
     PRIVATE
         ${Qt6Widgets_INCLUDE_DIRS}  # Qt include directories
-        "${SRC_DIR}/lib"            # backend source directory
 )
