@@ -13,14 +13,36 @@
 /*                                                                                */
 /**********************************************************************************/
 
-#include "win_timer.h"
+using System;
 
-#include <QApplication>
+using Avalonia.Controls;
+using Avalonia.Controls.Templates;
 
-namespace spdtmrapp {
-    TimerWindow::TimerWindow(const unsigned int &sizeX, const unsigned int &sizeY) {
-        // set title and chosen size.
-        setWindowTitle(QApplication::translate("toplevel", "spdtmr"));
-        resize(sizeX, sizeY);
+using Spdtmr.ViewModels;
+
+namespace Spdtmr {
+    // Class to convert view models into views (https://docs.avaloniaui.net/tutorials/todo-list-app/locating-views).
+    //
+    public class ViewLocator : IDataTemplate {
+        public IControl Build(object data) {
+            // Replace the string "ViewModel" with "View" in the qualified name of data's type.
+            var name = data.GetType().FullName!.Replace("ViewModel", "View");
+
+            // Get a type that matches name.
+            var type = Type.GetType(name);
+
+            // If type is not NULL, then create an instance of that type and return it.
+            // Otherwise, a "Not found" message is produced.
+            if (type != null) {
+                return (Control) Activator.CreateInstance(type)!;
+            } else {
+                return new TextBlock { Text = "Not Found: " + name };
+            }
+        }
+
+        public bool Match(object data) {
+            // Return true if data inherits from ViewModelBase
+            return data is ViewModelBase;
+        }
     }
 }

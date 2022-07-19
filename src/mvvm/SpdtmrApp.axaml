@@ -1,0 +1,12 @@
+<!-- This file defines the global properties for the spdtmr application, consistent with all other views. -->
+
+<Application xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:Spdtmr" x:Class="Spdtmr.SpdtmrApp">
+    <Application.DataTemplates>
+        <local:ViewLocator/>
+    </Application.DataTemplates>
+
+    <!-- Global application style configuration. -->
+    <Application.Styles>
+        <FluentTheme Mode="Light"/>
+    </Application.Styles>
+</Application>

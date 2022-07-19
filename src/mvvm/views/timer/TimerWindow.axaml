@@ -1,0 +1,15 @@
+<!-- This view is for the timer window, which acts as the main window for the application. -->
+
+<Window xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:vm="using:Spdtmr.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" x:Class="Spdtmr.Views.TimerWindow"
+        Title="spdtmr" Width="250" Height="100">
+
+    <Design.DataContext>
+        <!-- Controls will look for values within the TimerWindowViewModel class for bindings. -->
+        <vm:TimerWindowViewModel/>
+    </Design.DataContext>
+
+    <!-- Greeting as defined in the view model -->
+    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+</Window>

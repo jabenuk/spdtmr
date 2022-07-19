@@ -13,28 +13,12 @@
 /*                                                                                */
 /**********************************************************************************/
 
-#pragma once
-#ifndef __SPDTMR_WIN_TIMER_H
-#define __SPDTMR_WIN_TIMER_H
-
-#include <QMainWindow>
-
-namespace spdtmrapp {
-    // The timer window.
-    // This window will always be open as long as spdtmr is running, and so it inherits from QMainWindow
-    // This means it will be treated as the main/root window of the application.
+namespace Spdtmr.ViewModels {
+    // The view model for the timer window (TimerWindow.axaml).
+    // In an MVVM setup, a view-model is what connects the view (frontend) to the model (backend).
     //
-    class TimerWindow : public QMainWindow {
-        Q_OBJECT
-
-    public:
-        // Constructor for the timer window, where properties such as the window's size may be specified.
-        //
-        TimerWindow(
-            const unsigned int &sizeX,
-            const unsigned int &sizeY
-        );
-    };
+    public class TimerWindowViewModel : ViewModelBase {
+        // Greeting which is displayed in the view with an Avalonia {Binding}.
+        public string Greeting => "Hello spdtmr!";
+    }
 }
-
-#endif // __SPDTMR_WIN_TIMER_H

@@ -13,17 +13,11 @@
 /*                                                                                */
 /**********************************************************************************/
 
-#include <QApplication>
+using ReactiveUI;
 
-#include "windows/win_timer.h"
-
-int main(int argc, char **argv) {
-    QApplication proc(argc, argv);
-
-    // initially open with the timer window.
-    // this is the main window!
-    spdtmrapp::TimerWindow timer(320, 240);
-    timer.show();
-
-    return proc.exec();
+namespace Spdtmr.ViewModels {
+    // A base view model class from which all other view models inherit.
+    //
+    public class ViewModelBase : ReactiveObject {
+    }
 }
