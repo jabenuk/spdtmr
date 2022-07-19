@@ -18,7 +18,9 @@ namespace Spdtmr.ViewModels {
     // In an MVVM setup, a view-model is what connects the view (frontend) to the model (backend).
     //
     public class TimerWindowViewModel : ViewModelBase {
-        // Greeting which is displayed in the view with an Avalonia {Binding}.
+        public string WindowWidth => "300";
+        public string WindowHeight => "300";
+
         public string Greeting => "Hello spdtmr!";
     }
 }
