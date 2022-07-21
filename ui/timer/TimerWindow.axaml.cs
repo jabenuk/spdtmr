@@ -14,6 +14,7 @@
 /**********************************************************************************/
 
 using Avalonia;
+using Avalonia.Interactivity;
 using Avalonia.Input;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
@@ -29,7 +30,7 @@ namespace Spdtmr.UI.Views {
         // Constructor
         //
         public TimerWindow() {
-            InitializeComponent();
+            InitialiseComponent();
 
             // attach development tools if the build configuration is set to debug.
 #           if DEBUG
@@ -39,11 +40,29 @@ namespace Spdtmr.UI.Views {
             // mouse handlers for window movement and resize events
             this.AddHandler(PointerPressedEvent, MouseDownHandler);
             this.AddHandler(PointerMovedEvent, MouseMoveHandler);
+
+            InitialiseContextMenu();
+        }
+
+        // Create the right-click context menu with items
+        //
+        private void InitialiseContextMenu() {
+            // quit item
+            MenuItem item_Quit = new MenuItem { Header = "Quit" };
+            item_Quit.AddHandler(PointerReleasedEvent, (object? sender, PointerReleasedEventArgs e) => {
+                Close();
+            });
+
+            this.ContextMenu = new ContextMenu {
+                Items = new [] {
+                    item_Quit
+                }
+            };
         }
 
         // Load XAML at runtime.
         //
-        private void InitializeComponent() {
+        private void InitialiseComponent() {
             // Load the Avalonia xaml file.
             AvaloniaXamlLoader.Load(this);
         }

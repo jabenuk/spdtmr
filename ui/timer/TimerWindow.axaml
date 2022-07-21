@@ -16,6 +16,8 @@
         <vm:TimerWindowViewModel/>
     </Design.DataContext>
 
-    <!-- Greeting as defined in the view model -->
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <Panel>
+        <!-- Greeting as defined in the view model -->
+        <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </Panel>
 </Window>
