@@ -8,7 +8,6 @@
         Width="{Binding WindowWidth}"
         Height="{Binding WindowHeight}"
 
-        CanResize="False"
         HasSystemDecorations="False"
     >
 
