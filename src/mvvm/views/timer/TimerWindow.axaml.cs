@@ -101,40 +101,45 @@ namespace Spdtmr.Views {
             // get pointer position
             Point cursorPos = e.GetCurrentPoint(this).Position;
 
-            // top
-            if (cursorPos.Y < ResizeMargin) {
+            // corner resize margin is bigger to make it easier to resize by corners
+            double cornerMargin = ResizeMargin * 2;
+
+            // top corners
+            if (cursorPos.Y < cornerMargin) {
                 // top left
-                if (cursorPos.X < ResizeMargin) {
+                if (cursorPos.X < cornerMargin) {
                     return WindowEdge.NorthWest;
                 }
                 // top right
-                if (cursorPos.X > Width - ResizeMargin) {
+                if (cursorPos.X > Width - cornerMargin) {
                     return WindowEdge.NorthEast;
                 }
-                // top middle
-                return WindowEdge.North;
             }
-
-            // bottom
-            if (cursorPos.Y > Height - ResizeMargin) {
+            // bottom corners
+            if (cursorPos.Y > Height - cornerMargin) {
                 // bottom left
-                if (cursorPos.X < ResizeMargin) {
+                if (cursorPos.X < cornerMargin) {
                     return WindowEdge.SouthWest;
                 }
                 // bottom right
-                if (cursorPos.X > Width - ResizeMargin) {
+                if (cursorPos.X > Width - cornerMargin) {
                     return WindowEdge.SouthEast;
                 }
-                // bottom middle
-                return WindowEdge.South;
             }
 
-            // left (corners have already been handled)
+            // top middle
+            if (cursorPos.Y < ResizeMargin) {
+                return WindowEdge.North;
+            }
+            // bottom middle
+            if (cursorPos.Y > Height - ResizeMargin) {
+                return WindowEdge.South;
+            }
+            // left middle
             if (cursorPos.X < ResizeMargin) {
                 return WindowEdge.West;
             }
-
-            // right (corners have already been handled)
+            // right middle
             if (cursorPos.X > Width - ResizeMargin) {
                 return WindowEdge.East;
             }
