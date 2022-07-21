@@ -13,36 +13,30 @@
 /*                                                                                */
 /**********************************************************************************/
 
-using System;
+using Avalonia;
+using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Markup.Xaml;
 
-using Avalonia.Controls;
-using Avalonia.Controls.Templates;
+using Spdtmr.UI.Views;
+using Spdtmr.UI.ViewModels;
 
-using Spdtmr.ViewModels;
-
-namespace Spdtmr {
-    // Class to convert view models into views (https://docs.avaloniaui.net/tutorials/todo-list-app/locating-views).
+namespace Spdtmr.UI {
+    // C# loader class for the spdtmr Avalonia application, defined in SpdtmrApp.axaml.
     //
-    public class ViewLocator : IDataTemplate {
-        public IControl Build(object data) {
-            // Replace the string "ViewModel" with "View" in the qualified name of data's type.
-            var name = data.GetType().FullName!.Replace("ViewModel", "View");
-
-            // Get a type that matches name.
-            var type = Type.GetType(name);
-
-            // If type is not NULL, then create an instance of that type and return it.
-            // Otherwise, a "Not found" message is produced.
-            if (type != null) {
-                return (Control) Activator.CreateInstance(type)!;
-            } else {
-                return new TextBlock { Text = "Not Found: " + name };
-            }
+    public class SpdtmrApp : Application {
+        public override void Initialize() {
+            // Load SpdtmrApp.axaml.
+            AvaloniaXamlLoader.Load(this);
         }
 
-        public bool Match(object data) {
-            // Return true if data inherits from ViewModelBase
-            return data is ViewModelBase;
+        public override void OnFrameworkInitializationCompleted() {
+            // Set the main window of the application to be the timer window
+            if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop) {
+                desktop.MainWindow = new TimerWindow { DataContext = new TimerWindowViewModel() };
+            }
+
+            // Run parent (Application) OnFrameworkInitializationCompleted func
+            base.OnFrameworkInitializationCompleted();
         }
     }
 }

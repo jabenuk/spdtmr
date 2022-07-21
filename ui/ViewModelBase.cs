@@ -15,7 +15,7 @@
 
 using ReactiveUI;
 
-namespace Spdtmr.ViewModels {
+namespace Spdtmr.UI.ViewModels {
     // A base view model class from which all other view models inherit.
     //
     public class ViewModelBase : ReactiveObject {

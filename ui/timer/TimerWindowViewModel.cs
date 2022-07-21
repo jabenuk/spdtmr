@@ -13,30 +13,14 @@
 /*                                                                                */
 /**********************************************************************************/
 
-using Avalonia;
-using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Markup.Xaml;
-
-using Spdtmr.Views;
-using Spdtmr.ViewModels;
-
-namespace Spdtmr {
-    // C# loader class for the spdtmr Avalonia application, defined in SpdtmrApp.axaml.
+namespace Spdtmr.UI.ViewModels {
+    // The view model for the timer window.
+    // In an MVVM setup, a view-model is what connects the view (frontend) to the model (backend).
     //
-    public class SpdtmrApp : Application {
-        public override void Initialize() {
-            // Load SpdtmrApp.axaml.
-            AvaloniaXamlLoader.Load(this);
-        }
+    public class TimerWindowViewModel : ViewModelBase {
+        public string WindowWidth => "300";
+        public string WindowHeight => "300";
 
-        public override void OnFrameworkInitializationCompleted() {
-            // Set the main window of the application to be the timer window
-            if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop) {
-                desktop.MainWindow = new TimerWindow { DataContext = new TimerWindowViewModel() };
-            }
-
-            // Run parent (Application) OnFrameworkInitializationCompleted func
-            base.OnFrameworkInitializationCompleted();
-        }
+        public string Greeting => "Hello spdtmr!";
     }
 }

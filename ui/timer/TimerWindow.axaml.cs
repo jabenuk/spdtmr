@@ -18,8 +18,8 @@ using Avalonia.Input;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace Spdtmr.Views {
-    // C# loader class for the TimerWindow view, defined in TimerWindow.axaml.
+namespace Spdtmr.UI.Views {
+    // C# class for the TimerWindow view, the layout of which is defined in TimerWindow.axaml.
     //
     public partial class TimerWindow : Window {
         // The distance from window edges where the cursor can be to resize the window.

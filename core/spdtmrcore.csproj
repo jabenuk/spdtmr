@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net5.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <AssemblyName>spdtmrapp</AssemblyName>
+
+        <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+
+        <!-- CS2002 => "Source file specified multiple times" -->
+        <NoWarn>CS2002</NoWarn>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Remove=".gitignore"/>
+
+        <Compile Include="**/*.cs"/>
+        <Compile Include="*.cs"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="../ui/spdtmrui.csproj"/>
+    </ItemGroup>
+</Project>

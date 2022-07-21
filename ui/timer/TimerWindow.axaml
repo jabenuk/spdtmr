@@ -1,8 +1,8 @@
 <!-- This view is for the timer window, which acts as the main window for the application. -->
 
-<Window xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:vm="using:Spdtmr.ViewModels"
+<Window xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:vm="using:Spdtmr.UI.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" x:Class="Spdtmr.Views.TimerWindow"
+        mc:Ignorable="d" x:Class="Spdtmr.UI.Views.TimerWindow"
 
         Title="spdtmr"
         Width="{Binding WindowWidth}"

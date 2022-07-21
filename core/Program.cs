@@ -13,14 +13,27 @@
 /*                                                                                */
 /**********************************************************************************/
 
-namespace Spdtmr.ViewModels {
-    // The view model for the timer window (TimerWindow.axaml).
-    // In an MVVM setup, a view-model is what connects the view (frontend) to the model (backend).
-    //
-    public class TimerWindowViewModel : ViewModelBase {
-        public string WindowWidth => "300";
-        public string WindowHeight => "300";
+using System;
 
-        public string Greeting => "Hello spdtmr!";
+using Avalonia;
+using Avalonia.ReactiveUI;
+
+using Spdtmr.UI;
+
+namespace Spdtmr.Core {
+    class Program {
+        // Execute the spdtmr application
+        //
+        [STAThread]
+        public static void Main(string[] args) {
+            // Use the Avalonia start function
+            BuildAvaloniaApplication().StartWithClassicDesktopLifetime(args);
+        }
+
+        // Return the Avalonia configuration for the SpdtmrApp class.
+        //
+        public static AppBuilder BuildAvaloniaApplication() {
+            return AppBuilder.Configure<SpdtmrApp>().UsePlatformDetect().LogToTrace().UseReactiveUI();
+        }
     }
 }
